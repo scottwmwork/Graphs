@@ -38,14 +38,51 @@ class Graph:
         Print each vertex in breadth-first order
         beginning from starting_vertex.
         """
-        pass  # TODO
+        
+        # Create a Queue
+        q = Queue()
+        # Enqueue the starting vertex
+        q.enqueue(starting_vertex)
+        # Create a set to store visited vertices
+        visted = set()
+        # While the queue is not empty...
+        while q.size() > 0
+            # Dequeue the first vertex
+            v = q.dequeue()
+            # Check if it's been visited
+            # If it hasn't been visited
+            if v not in visited:
+                # Mark as visted
+                print(v)
+                visited.add(v)
+                # Enqueue all it's neighbors
+                for neighbor in self.get_neighbors(v):
+                    q.enqueue(neighbor)
 
     def dft(self, starting_vertex):
         """
         Print each vertex in depth-first order
         beginning from starting_vertex.
         """
-        pass  # TODO
+        # Create a Stack
+        s = Stack()
+        # Enqueue the starting vertex
+        s.push(starting_vertex)
+        # Create a set to store visited vertices
+        visted = set()
+        # While the queue is not empty...
+        while s.size() > 0
+            # Pop the first vertex
+            v = s.pop()
+            # Check if it's been visited
+            # If it hasn't been visited
+            if v not in visited:
+                # Mark as visted
+                print(v)
+                visited.add(v)
+                # Push all it's neighbors
+                for neighbor in self.get_neighbors(v):
+                    s.push(neighbor)
 
     def dft_recursive(self, starting_vertex):
         """
