@@ -46,7 +46,7 @@ class Graph:
         # Create a set to store visited vertices
         visted = set()
         # While the queue is not empty...
-        while q.size() > 0
+        while q.size() > 0:
             # Dequeue the first vertex
             v = q.dequeue()
             # Check if it's been visited
@@ -71,7 +71,7 @@ class Graph:
         # Create a set to store visited vertices
         visted = set()
         # While the queue is not empty...
-        while s.size() > 0
+        while s.size() > 0:
             # Pop the first vertex
             v = s.pop()
             # Check if it's been visited
@@ -84,14 +84,31 @@ class Graph:
                 for neighbor in self.get_neighbors(v):
                     s.push(neighbor)
 
-    def dft_recursive(self, starting_vertex):
-        """
-        Print each vertex in depth-first order
-        beginning from starting_vertex.
+    def dft_recursive(self, starting_vertex, visited = None):
+		"""
+		Print each vertex in depth-first order
+		beginning from starting_vertex.
 
-        This should be done using recursion.
-        """
-        pass  # TODO
+		This should be done using recursion.
+		"""
+		
+		if visted == None:        
+			# Create a set to store visited vertices
+			visted = set()
+
+		if starting_vertex not in visted:
+
+			# Mark starting_vertex as visted
+			print(starting_vertex)
+			visted.add(starting_vertex)
+
+			# Check to see if starting_vertex has children
+			neighbors = self.get_neighbors(starting_vertex)
+			if len(neighbors) > 0:
+					for neighbor in neighbors:
+						dft_recursive(neighbor, visted)
+			else:
+				return
 
     def bfs(self, starting_vertex, destination_vertex):
         """
@@ -99,7 +116,8 @@ class Graph:
         starting_vertex to destination_vertex in
         breath-first order.
         """
-        pass  # TODO
+
+        
 
     def dfs(self, starting_vertex, destination_vertex):
         """
