@@ -59,6 +59,7 @@ class SocialGraph:
         possible_friendships = []
         for user_id in self.users:
             for friend_id in range(user_id + 1, self.last_id + 1):
+                self.add_friendship(user_id, friend_id)
                 
     def get_all_social_paths(self, user_id):
         """
@@ -78,7 +79,7 @@ class SocialGraph:
         # Enqueue a path to the starting user_id
         q.enqueue([user_id])
         # While the queue is not empty...
-        while q.size > 0
+        while q.size() > 0:
             #dequeue the first path
             path = q.dequeue()
             # grab the last id from the path
