@@ -1,7 +1,5 @@
 import random 
 
-import os
-os.chdir('../graph')
 from util import Queue
 
 class User:
@@ -53,7 +51,7 @@ class SocialGraph:
         # Add users
         # Write a for loop that calls create user the right amount of times
         for i in range(num_users):
-            self.add_user(f"User {self.i+1}")
+            self.add_user(f"User {i+1}")
 
         # Create friendships
         possible_friendships = []
@@ -97,14 +95,10 @@ class SocialGraph:
                     path_copy.append(friend_id)
                     # enqueue
                     q.enqueue(path_copy)
-            
         return visited
 
 
     
-            
-
-
 if __name__ == '__main__':
     sg = SocialGraph()
     sg.populate_graph(10, 2)
