@@ -13,7 +13,7 @@ class Graph:
         """
         Add a vertex to the graph.
         """
-        self.vertices['vertex_id'] = set()
+        self.vertices[vertex_id] = set()
 
     def add_edge(self, v1, v2):
         """
@@ -44,7 +44,7 @@ class Graph:
         # Enqueue the starting vertex
         q.enqueue(starting_vertex)
         # Create a set to store visited vertices
-        visted = set()
+        visited = set()
         # While the queue is not empty...
         while q.size() > 0:
             # Dequeue the first vertex
@@ -52,7 +52,7 @@ class Graph:
             # Check if it's been visited
             # If it hasn't been visited
             if v not in visited:
-                # Mark as visted
+                # Mark as visited
                 print(v)
                 visited.add(v)
                 # Enqueue all it's neighbors
@@ -69,7 +69,7 @@ class Graph:
         # Enqueue the starting vertex
         s.push(starting_vertex)
         # Create a set to store visited vertices
-        visted = set()
+        visited = set()
         # While the queue is not empty...
         while s.size() > 0:
             # Pop the first vertex
@@ -77,7 +77,7 @@ class Graph:
             # Check if it's been visited
             # If it hasn't been visited
             if v not in visited:
-                # Mark as visted
+                # Mark as visited
                 print(v)
                 visited.add(v)
                 # Push all it's neighbors
@@ -85,27 +85,27 @@ class Graph:
                     s.push(neighbor)
 
     def dft_recursive(self, starting_vertex, visited = None):
-		"""
-		Print each vertex in depth-first order
-		beginning from starting_vertex.
+        """
+        Print each vertex in depth-first order
+        beginning from starting_vertex.
 
-		This should be done using recursion.
-		"""
-		
-		if visted is None:        
-			# Create a set to store visited vertices
-			visted = set()
+        This should be done using recursion.
+        """
 
-		if starting_vertex not in visted:
+        if visited is None:        
+        	# Create a set to store visited vertices
+        	visited = set()
 
-			# Mark starting_vertex as visted
-			print(starting_vertex)
-			visted.add(starting_vertex)
+        if starting_vertex not in visited:
 
-			# Check to see if starting_vertex has children
-			neighbors = self.get_neighbors(starting_vertex)
-                for neighbor in neighbors:
-                    dft_recursive(neighbor, visted)
+            # Mark starting_vertex as visited
+            print(starting_vertex)
+            visited.add(starting_vertex)
+
+            # Check to see if starting_vertex has children
+            neighbors = self.get_neighbors(starting_vertex)
+            for neighbor in neighbors:
+                self.dft_recursive(neighbor, visited)
 
 
     def bfs(self, starting_vertex, destination_vertex):
@@ -119,7 +119,7 @@ class Graph:
         q = Queue()
         # Enqueue A PATH TO the starting vertex
         q.enqueue([starting_vertex])
-        # Create a set to store visted vertices
+        # Create a set to store visited vertices
         visited = set()
         # While  the queue is not empty
         while q.size() > 0:
@@ -127,10 +127,10 @@ class Graph:
             path = q.dequeue()
             # Grab the vertex from the end of the path
             v = path[-1]
-            # Check if it's been visted
-            if v not in visted:
-                # Mark it as visted
-                visted.add(v)
+            # Check if it's been visited
+            if v not in visited:
+                # Mark it as visited
+                visited.add(v)
                 # Check if it's the target
                 if v == destination_vertex:
                     return path
@@ -150,7 +150,7 @@ class Graph:
         s = Stack()
         # push A PATH TO the starting vertex
         s.push([starting_vertex])
-        # Create a set to store visted vertices
+        # Create a set to store visited vertices
         visited = set()
         # While  the queue is not empty
         while s.size() > 0:
@@ -158,10 +158,10 @@ class Graph:
             path = s.pop()
             # Grab the vertex from the end of the path
             v = path[-1]
-            # Check if it's been visted
-            if v not in visted:
-                # Mark it as visted
-                visted.add(v)
+            # Check if it's been visited
+            if v not in visited:
+                # Mark it as visited
+                visited.add(v)
                 # Check if it's the target
                 if v == destination_vertex:
                     return path
@@ -180,25 +180,24 @@ class Graph:
         This should be done using recursion.
         """
 
-        if visted is None:
-            visted = set()
+        if visited is None:
+            visited = set()
         if path is None:
             path = []
 
-        if starting_vertex not in visted
+        if starting_vertex not in visited:
             visited.add(starting_vertex)
             path_copy = path.copy()
             path_copy.append(starting_vertex)
-            if starting_vertex == destination_vertex:
+            if starting_vertex == target_value:
                 return path_copy
             for neighbor in self.get_neighbors(starting_vertex):
-                new_path = self.dfs_recursive(neighbor, destination_vertex, visited, path_copy)
+                new_path = self.dfs_recursive(neighbor, target_value, visited, path_copy)
                 if new_path is not None:
                     return new_path
         return None
 
         
-
 if __name__ == '__main__':
     graph = Graph()  # Instantiate your graph
     # https://github.com/LambdaSchool/Graphs/blob/master/objectives/breadth-first-search/img/bfs-visit-order.png
