@@ -54,7 +54,7 @@ If all paths have been explored, you're done!
 ## Stretch Problems
 
 It is very difficult to calculate the shortest possible path that traverses the entire graph. Why?
-
+  As the as the graph gets bigger, the time it takes to traverse it takes longer as well. 
 My best path is 957 moves. Can you find a shorter path?
 
 
